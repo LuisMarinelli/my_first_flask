@@ -1,0 +1,31 @@
+{# produtos.html #}
+{% extends 'shared/base.html' %}
+{% block title %}Produtos{% endblock %}
+
+{% block content %}
+    <h1>Lista de Produtos</h1>
+    
+    {% if produtos %}
+        <ul class="produtos-lista">
+        {% for produto in produtos %}
+            <li class="produto-item">
+                <h3>{{ produto.nome }}</h3>
+                <p>Preço: R$ {{ produto.preco | round(2) }}</p>
+                
+                {% if produto.em_estoque %}
+                    <span class="badge badge-success">Em estoque</span>
+                {% else %}
+                    <span class="badge badge-danger">Fora de estoque</span>
+                {% endif %}
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nenhum produto encontrado.</p>
+    {% endif %}
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}  {# Mantém os scripts do template base #}
+    <script src="{{ url_for('static', filename='js/produtos.js') }}"></script>
+{% endblock %}

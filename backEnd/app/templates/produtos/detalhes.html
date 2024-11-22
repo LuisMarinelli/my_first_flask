@@ -1,0 +1,16 @@
+{# detalhes.html #}
+{% extends 'shared/base.html' %}
+
+{% block title %}Detalhe dos Produtos{% endblock %}
+
+{% block content %}
+    <h1>Detalhes</h1>
+    
+        <p>Nenhum produto encontrado.</p>
+    
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}  {# Mantém os scripts do template base #}
+    <script src="{{ url_for('static', filename='js/produtos.js') }}"></script>
+{% endblock %}
